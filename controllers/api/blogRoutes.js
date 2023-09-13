@@ -1,11 +1,9 @@
 const router = require('express').Router();
-const Sequelize = require('sequelize');
-const { User, BlogPost, Comment } = require('../models');
-const withAuth = require('../utils/auth');
+const { User, BlogPost, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 const dayjs = require('dayjs');
 
-// get all blog posts for homepage
-
+// Get all blog posts for homepage
 router.get('/', async (req, res) => {
     try {
         const blogPostData = await BlogPost.findAll({
@@ -25,8 +23,5 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-
-
 
 module.exports = router;

@@ -4,9 +4,6 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
-
-
-
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -53,5 +50,8 @@ app.use(routes);
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
-  server.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
+  // Start the Express server inside the sequelize.sync callback
+  app.listen(PORT, () => {
+    console.log(`Now listening on ${PORT}`);
+  });
 });
