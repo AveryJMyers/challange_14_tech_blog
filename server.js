@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
-const routes = require("./models");
+const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 
 
@@ -34,9 +34,6 @@ const sess = {
 
 app.use(session(sess));
 
-// Import and use ticket routes
-const ticketRoutes = require("./controllers/api/ticketsRoutes"); // Update the path
-app.use("/tickets", ticketRoutes); // Make sure the path here matches the path you want to use
 
 // Inform Express.js on which template engine to use
 app.engine("handlebars", hbs.engine);
@@ -50,7 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 // Use the login-related middleware
-app.use(require("./controllers/login"));
+app.use("/login", require("./controllers/login"));
 
 app.use(routes);
 
