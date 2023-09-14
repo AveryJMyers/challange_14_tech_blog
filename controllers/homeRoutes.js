@@ -4,7 +4,7 @@ const { User, BlogPost, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 const dayjs = require('dayjs');
 
-// get all blog posts for homepage
+// get one blog posts for homepage
 router.get('/', async (req, res) => {
   console.log('homepage route hit')
   try{
@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
+      limit: 2,
     });
     const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
     console.log(blogPosts)
@@ -29,7 +30,6 @@ router.get('/', async (req, res) => {
   }
 });
   
-
 
 
 module.exports = router;

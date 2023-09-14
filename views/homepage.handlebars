@@ -1,17 +1,25 @@
 
-
-{{#each blogPosts}}
-<style>
-    .card {
-        margin-bottom: 20px;
-    }
-</style>
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6>
-        <p class="card-text">{{content}}</p>
-        <a href="#" class="card-link">View Comments</a>
+<section class="hpContent">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="card-link">Sign-In</a>
+        <a href="#" class="card-link">Sign-Up</a>
+      </div>     
     </div>
-</div>
-{{/each}}
+    <div class="card">
+      <div class="card-header">
+        Featured Post
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <div class="card-footer text-muted">
+      2 days ago
+      </div>
+    </div>
+</section>

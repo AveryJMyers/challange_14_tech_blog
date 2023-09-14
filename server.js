@@ -41,6 +41,16 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/public', express.static('public'));
+
+app.get('/styles.css', (req, res) => {
+    res.sendFile(__dirname + '/public/css/styles.css', {
+        headers: {
+            'Content-Type': 'text/css'
+        }
+    });
+});
+
 
 
 

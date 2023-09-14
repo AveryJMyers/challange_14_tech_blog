@@ -1,0 +1,25 @@
+.card{
+    border-radius: 5px;
+    color: #ccc;
+}
+
+.hpContent{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.card {
+    /* Distribute equal width among the cards */
+    padding: 20px;
+    display: flex;
+    border: 1px solid #ccc;
+    margin: 10px;
+    text-align: center;
+    background-color: #343a40;
+}
+
+
+.card-body p{
+    margin-top: 20px;
+}
