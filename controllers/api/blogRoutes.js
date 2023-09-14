@@ -4,24 +4,21 @@ const withAuth = require('../../utils/auth');
 const dayjs = require('dayjs');
 
 // Get all blog posts for homepage
+
 router.get('/', async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-            ],
-        });
-        const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
-        res.render('homepage', {
-            blogPosts,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        res.status(500).json(err);
+      const blogData = await BlogPost.findAll();
+      const blog = blogData.map((blog) => {
+        return blog.get({ plain: true });
+      });
+  
+      res.status(200).json(blog);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'server error' });
     }
-});
+  });
+    
+
 
 module.exports = router;

@@ -5,27 +5,15 @@ const withAuth = require('../utils/auth');
 const dayjs = require('dayjs');
 
 // get all blog posts for homepage
-
-router.get('/', async (req, res) => {
-    try {
-        const blogPostData = await BlogPost.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-            ],
-        });
-        const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
-        res.render('homepage', {
-            blogPosts,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+router.get("/", async (req, res) => {
+  console.log("homepage route hit")
+  try {
+    res.render("homepage", {});
+  } catch (error) {
+    console.error("Error rendering homepage:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
-
 
 
 
