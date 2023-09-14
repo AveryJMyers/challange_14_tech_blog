@@ -17,20 +17,6 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        first_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [0,100],
-            },
-        },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [0,100],
-            },
-        },
         username: {
             type: DataTypes.STRING,
             allowNull:false,

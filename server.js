@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 // Use the login-related middleware
-app.use("/login", require("./controllers/login"));
+app.use("/login", require("./controllers/api/userRoutes"));
 
 app.use(routes);
 
