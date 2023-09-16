@@ -24,11 +24,20 @@
     margin-top: 20px;
 }
 
-.form-control{
+#username, #password{
     width: 20%;
     justify-content: center;
 }
 
 .hidden{
     display: none;
+}
+
+#blogTitle{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#blogContent{
+    margin-bottom: 5%;
 }

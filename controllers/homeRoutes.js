@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
-      limit: 2,
+      limit: 1,
     });
     const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
     console.log(blogPosts)
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+// Render the login page
 router.get('/login', async (req,res) => {
   console.log('login route hit')
   try{
@@ -44,5 +44,84 @@ router.get('/login', async (req,res) => {
   }
 });
 
+// login route
+router.post('/login', async (req, res) => {
+  console.log('login post route hit')
+  let username = req.body.username
+  let password = req.body.password
+
+  try{
+    const user = await User.findOne({ where: { username: username } });
+    const now = dayjs();
+    console.log(user);
+    if (user && user.checkPassword(password)) {
+      req.session.save(() => {
+        req.session.user_id = user.id;
+        req.session.logged_in = true;
+        req.session.username = username;
+        req.session.last_logged = now.format('YYYY-MM-DD HH:mm:ss');
+        res.redirect('/');
+        console.log('-------------login successful----------------')
+      });
+      console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.username);
+    } else {
+      res.render("login", { error: "Invalid credentials" }); // Display error message
+    }
+  } catch (error) {
+    res.render("login", { error: "An error occurred" }); // Display error message
+
+  }
+});
+
+
+// render signup page
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("signup", {
+      user_name: req.session.user_name,
+      logged_in: req.session.logged_in,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Fly you fools. Server Error");
+  }
+});
+
+// sign user up
+
+router.post("/signup", async (req, res) => {
+  console.log('signup post route hit')
+  try{
+    const user = await User.create({
+      username: req.body.username,
+      password: req.body.password,
+    });
+    console.log(user);
+    req.session.save(() => {
+      req.session.user_id = user.id;
+      req.session.logged_in = true;
+      req.session.username = user.username;
+      res.redirect("/");
+    });
+  }catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  console.log("is this happening")
+  if (req.session.logged_in) {
+    // Remove the session variables
+    req.session.destroy(() => {
+      // confirm that user by name has been logged out in console
+      req.session.logged_in = false; // Set logged_in to false
+      console.log('User logged out:', req.session.user_id);
+      res.redirect('/'); // Redirect to homepage
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 module.exports = router;

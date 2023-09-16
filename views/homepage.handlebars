@@ -1,4 +1,33 @@
-
+{{#if logged_in}}
+  <section class="hpContent">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Write A Blog Post Now!</h5>
+          <form>
+            <input type="text" id="blogTitle" class="form-control" placeholder="Blog Post Title" name="title">
+            <textarea class="form-control" id="blogContent" rows="5" placeholder="What's on your mind?" name="content"></textarea>
+            <a href="#" class="btn btn-primary">Post Blog</a>
+          </form>
+      </div>     
+    </div>
+    {{#each blogPosts}}
+    <div class="card">
+      <div class="card-header">
+        Featured Post
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{title}}</h5>
+        <h5 class="card-subtitle mb-2 text-muted">By: {{user.username}}</h6>
+        <p class="card-text">{{content}}</p>
+        <a href="#" class="btn btn-primary">View More Posts</a>
+      </div>
+      <div class="card-footer text-muted">
+      {{format_date date_posted}}
+      </div>
+    </div>
+</section>
+{{/each}}
+{{else}}
 <section class="hpContent">
     <div class="card">
       <div class="card-body">
@@ -6,7 +35,7 @@
         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="/login" class="card-link">Sign-In</a>
-        <a href="/views/signup" class="card-link">Sign-Up</a>
+        <a href="/signup" class="card-link">Sign-Up</a>
       </div>     
     </div>
     <div class="card">
@@ -23,3 +52,5 @@
       </div>
     </div>
 </section>
+{{/if}}
+

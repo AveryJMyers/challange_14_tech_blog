@@ -1,17 +1,17 @@
-<h1>YOU MADE IT TO SIGNUP</h1>
 <div class="card" id="signInCard">
-  <div class="card-header">
-    Sign-In!
-  </div>
   <div class="card-body text-center">
-    <h5 class="card-title">Special title treatment</h5>
+    <h5 class="card-title">Sign-Up for the Tech Blog!</h5>
     <div class="form-group text-center">
-      <label for="formControlInput" class="form-label">Username</label>
-      <input type="email" class="form-control mx-auto" id="formControlInput" placeholder="name@example.com"> 
-      <label for="formControlInput" class="form-label">Password</label>
-      <input type="password" class="form-control mx-auto" id="formControlInput" placeholder="********">
+      <form action="/signup" method="post">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control mx-auto" id="username" placeholder="TechFan" name="username" required> 
+
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control mx-auto" id="password" placeholder="********" name="password">
+
+        <button type="submit" class="btn btn-primary" id="signInButton">Sign In</button>
+      </form>
     </div>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
   <div class="card-footer text-muted hidden">
   </div>
