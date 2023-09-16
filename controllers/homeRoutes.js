@@ -29,7 +29,20 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-  
+
+
+router.get('/login', async (req,res) => {
+  console.log('login route hit')
+  try{
+    res.render('login',{
+      username: req.session.username,
+      logged_in: req.session.logged_in,
+    })
+  }catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 
 module.exports = router;
