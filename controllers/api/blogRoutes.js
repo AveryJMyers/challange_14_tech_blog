@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
       content,
       user_id: req.session.user_id,
     });
-    return res.status(200).json(newPost);
+    console.log(newPost);
 
   } catch (err) {
     console.error(err);

@@ -3,10 +3,10 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Write A Blog Post Now!</h5>
-          <form>
+          <form id="blogForm" method="post" action="/api/blog">
             <input type="text" id="blogTitle" class="form-control" placeholder="Blog Post Title" name="title">
             <textarea class="form-control" id="blogContent" rows="5" placeholder="What's on your mind?" name="content"></textarea>
-            <a href="#" class="btn btn-primary">Post Blog</a>
+              <button type="submit" class="btn btn-primary" id="signInButton">Post Blog</button>
           </form>
       </div>     
     </div>
@@ -19,7 +19,7 @@
         <h4 class="card-title">{{title}}</h5>
         <h5 class="card-subtitle mb-2 text-muted">By: {{user.username}}</h6>
         <p class="card-text">{{content}}</p>
-        <a href="#" class="btn btn-primary">View More Posts</a>
+        <a href="/feed" class="btn btn-primary">View Your Feed</a>
       </div>
       <div class="card-footer text-muted">
       {{format_date date_posted}}
@@ -53,4 +53,12 @@
     </div>
 </section>
 {{/if}}
+ <script>
+        document.getElementById("blogForm").addEventListener("submit", function(event) { 
+        event.preventDefault();
+        var form = document.getElementById("blogForm")
+        form.submit();
+        form.reset()
+        });
+  </script>
 

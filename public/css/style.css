@@ -41,3 +41,18 @@
 #blogContent{
     margin-bottom: 5%;
 }
+#feedCards{
+    width: 60%; 
+}
+
+#feedDiv{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    height: 100%; 
+    text-align: center;
+}
+
+#commentBtn{
+    width: 13%;
+    font-size: 15px;
+}
