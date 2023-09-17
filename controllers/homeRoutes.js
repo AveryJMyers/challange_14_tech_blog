@@ -32,6 +32,37 @@ router.get('/', async (req, res) => {
 
 
 // get all blog posts for feed
+// router.get('/feed', async (req, res) => {
+//   console.log('feed route hit')
+//   try{
+//     const blogPostData = await BlogPost.findAll({
+//       include: [
+//         {
+//           model: Comment,
+//           attributes: ['content', 'date_posted', 'author'],
+//         },
+//         {
+//           model: User,
+//           attributes: ['username'],
+//         }
+//       ],
+//     });
+//     const blogPosts = blogPostData.map((blogPost) => blogPost.get({ plain: true }));
+
+//     console.log(blogPosts)
+  
+//     res.render('feed', {
+//       blogPosts,
+//       logged_in: req.session.logged_in,
+//       username: req.session.username,
+//       user_id: req.session.user_id,
+//     });
+//   }catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
 router.get('/feed', async (req, res) => {
   console.log('feed route hit')
   try{
@@ -39,7 +70,12 @@ router.get('/feed', async (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['content', 'date_posted', 'author'],
+          attributes: ['content', 'date_posted'],
+          include: {
+            model: User,
+            attributes: ['username'],
+            as: 'comment_author' // Alias to access the User model for comment author
+          }
         },
         {
           model: User,
@@ -57,10 +93,13 @@ router.get('/feed', async (req, res) => {
       username: req.session.username,
       user_id: req.session.user_id,
     });
-  }catch (err) {
+  } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
+
 
 router.get('/myBlogs', async (req, res) => {
   console.log('blogpost route hit')

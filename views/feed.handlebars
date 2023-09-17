@@ -1,16 +1,18 @@
+
 {{#each blogPosts}}
 <section id="feedDiv">
   <div class="card text-center" id="feedCards">
     <h3>{{title}}</h3>
     <h5 class="card-subtitle mb-2 text-muted">{{user.username}} <br>{{format_date date_posted}} </h5>
     <h4 class="card-text content">{{content}}</h3>
+    
     {{#each comments}}
     <div id="commentSection">
         <div class="card-footer comments">
-        {{this.content}} - {{this.author}}
+        {{this.content}} - {{comment_author.username}} <!-- Access the commenter's username -->
         </div>
     {{/each}}
-        <form>
+        <form '/signup' method="post" id="{{id}}">
           <div class="input-group">
           <input type="text" class="form-control" placeholder="Thoughts?" aria-label="Username" aria-describedby="input-group-button-right">
           <button type="button" class="btn btn-outline-secondary" id="input-group-button-right">Submit Comment</button>

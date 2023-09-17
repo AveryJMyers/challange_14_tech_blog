@@ -58,9 +58,9 @@
 }
 
 .comments{
-    background-color: grey;
-    color:white;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 2%;
 }
 
 #commentSection {

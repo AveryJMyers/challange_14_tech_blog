@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
             content: req.body.content,
             date_posted: req.body.date_posted,
             author: req.session.user_id,
-            associatedPost: req.body.associatedPost,
+            associatedPost: req.body.id
         });
         res.status(200).json(newComment);
     } catch (err) {
