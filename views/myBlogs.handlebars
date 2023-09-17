@@ -1,3 +1,4 @@
+
 {{#each myBlogs}}
 <section id="feedDiv">
   <div class="card text-center" id="feedCards">
@@ -9,10 +10,15 @@
       </div>
     {{#each comments}}
       <div class="card-footer comments">
-      {{this.content}} - {{this.author}}
+        {{this.content}} - {{this.author}}
       </div>
+      {{else}}
+      <div>NO BLOGS YET</div>
     {{/each}}
   </div>
 </section>
+{{else}}
+  <div>NO BLOGS YET</div>
 {{/each}}
+
 

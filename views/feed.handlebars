@@ -12,14 +12,15 @@
         {{this.content}} - {{comment_author.username}} <!-- Access the commenter's username -->
         </div>
     {{/each}}
-        <form '/signup' method="post" id="{{id}}">
-          <div class="input-group">
-          <input type="text" class="form-control" placeholder="Thoughts?" aria-label="Username" aria-describedby="input-group-button-right">
-          <button type="button" class="btn btn-outline-secondary" id="input-group-button-right">Submit Comment</button>
-        </form>
-      </div>
+      <form action="/api/comment" method="post">
+        <div class="input-group">
+        <input type="hidden" name="associatedPost" value="{{id}}">
+        <input type="text" class="form-control" name="content" placeholder="Thoughts?" aria-label="Username" aria-describedby="input-group-button-right">
+         <button type="submit" class="btn btn-outline-secondary" id="input-group-button-right">Submit Comment</button>
+        </div>
+      </form>
       <div class="card-footer text-muted">
-      Posted: {{format_date date_posted}}
+        Posted: {{format_date date_posted}}
       </div>
     </div>
   </div>
