@@ -67,7 +67,8 @@
 #commentSection {
     text-align: center; /* Center align the content within the comment section */
     margin: 0px auto;   /* Adjust the top and bottom margin for spacing and center horizontally */
-    max-width: 80%; 
+    width: 300px; /* Adjust the width as per your design */
+    word-wrap: break-word;
 }
 
 .content{
@@ -75,3 +76,21 @@
     margin: 5%;
     border: 1px solid #ccc;
 }
+
+#hpIntro{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    max-width: 30%;
+}
+
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure it takes up the full width of the parent container. */
+  }
+
+  .card.createBlog {
+    width: 50%; /* Adjust this width as needed to control the width of the card. */
+  }

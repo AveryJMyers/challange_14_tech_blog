@@ -25,32 +25,35 @@
       {{format_date date_posted}}
       </div>
     </div>
+    {{/each}}
 </section>
-{{/each}}
 {{else}}
 <section class="hpContent">
-    <div class="card">
+    <div class="card" id="hpIntro">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">WELCOME TO TECH BLOG</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Where Tech Meets Innovation</h6>
+        <p class="card-text">At Tech Blog, we're passionate about all things tech. Our mission is to bring you the latest insights, trends, and innovations in the world of technology. Whether you're a seasoned developer or just tech-curious, you've come to the right place. Explore our engaging articles, tutorials, and reviews to stay at the forefront of the digital revolution.</p>
         <a href="/login" class="card-link">Sign-In</a>
         <a href="/signup" class="card-link">Sign-Up</a>
       </div>     
     </div>
+    {{#each blogPosts}}
     <div class="card">
       <div class="card-header">
         Featured Post
       </div>
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h4 class="card-title">{{title}}</h5>
+        <h5 class="card-subtitle mb-2 text-muted">By: {{user.username}}</h6>
+        <p class="card-text">{{content}}</p>
+        <a href="/signup" class="btn btn-primary">View Your Feed</a>
       </div>
       <div class="card-footer text-muted">
-      2 days ago
+      {{format_date date_posted}}
       </div>
     </div>
+    {{/each}}
 </section>
 {{/if}}
  <script>

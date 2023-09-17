@@ -9,7 +9,7 @@
     {{#each comments}}
     <div id="commentSection">
         <div class="card-footer comments">
-        {{this.content}} - {{comment_author.username}} <!-- Access the commenter's username -->
+          {{this.content}} <br> By: {{comment_author.username}} on {{format_date this.date_posted}}
         </div>
     {{/each}}
       <form action="/api/comment" method="post">

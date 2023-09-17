@@ -1,3 +1,17 @@
+<div class="center-div" id="feedDiv"> 
+  <div class="card text-center createBlog">
+    <div class="card-body">
+      <h5 class="card-title">Write A Blog Post Now!</h5>
+      <form id="blogForm" method="post" action="/api/blog">
+        <input type="text" id="blogTitle" class="form-control" placeholder="Blog Post Title" name="title">
+        <textarea class="form-control" id="blogContent" rows="5" placeholder="What's on your mind?" name="content"></textarea>
+        <button type="submit" class="btn btn-primary" id="signInButton">Post Blog</button>
+      </form>
+    </div>     
+  </div>
+</div>
+
+
 
 {{#each myBlogs}}
 <section id="feedDiv">
@@ -13,8 +27,12 @@
         {{this.content}} - {{this.author}}
       </div>
       {{else}}
-      <div>NO BLOGS YET</div>
+      <div>No Comments yet</div>
     {{/each}}
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Edit</button>
+      <button type="submit" class="btn btn-primary">Delete</button>
+    </div>
   </div>
 </section>
 {{else}}
