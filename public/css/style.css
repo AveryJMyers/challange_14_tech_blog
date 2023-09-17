@@ -56,3 +56,21 @@
     width: 13%;
     font-size: 15px;
 }
+
+.comments{
+    background-color: grey;
+    color:white;
+    border-radius: 5px;
+}
+
+#commentSection {
+    text-align: center; /* Center align the content within the comment section */
+    margin: 0px auto;   /* Adjust the top and bottom margin for spacing and center horizontally */
+    max-width: 80%; 
+}
+
+.content{
+    padding:5%;
+    margin: 5%;
+    border: 1px solid #ccc;
+}

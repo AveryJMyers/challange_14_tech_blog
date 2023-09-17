@@ -1,0 +1,18 @@
+{{#each myBlogs}}
+<section id="feedDiv">
+  <div class="card text-center" id="feedCards">
+    <h3>{{title}}</h3>
+    <h5 class="card-subtitle mb-2 text-muted">By: {{user.username}}</h5>
+    <p class="card-text">{{content}}</p>
+     <div class="card-footer text-muted">
+      Posted: {{format_date date_posted}}
+      </div>
+    {{#each comments}}
+      <div class="card-footer comments">
+      {{this.content}} - {{this.author}}
+      </div>
+    {{/each}}
+  </div>
+</section>
+{{/each}}
+

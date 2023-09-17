@@ -62,6 +62,32 @@ router.get('/feed', async (req, res) => {
   }
 });
 
+router.get('/myBlogs', async (req, res) => {
+  console.log('blogpost route hit')
+  console.log(req.session.user_id)
+  try{
+    const myBlogData = await BlogPost.findAll({
+      where: {
+        author: req.session.user_id,
+      },
+    });
+    const myBlogs = myBlogData.map((myBlog) => myBlog.get({ plain: true }));
+    console.log(myBlogs);
+
+    res.render("myBlogs", {
+      myBlogs,
+      logged_in: req.session.logged_in,
+      username: req.session.username,
+      user_id: req.session.user_id,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+  
+
 // Render the login page
 router.get('/login', async (req,res) => {
   console.log('login route hit')
@@ -155,5 +181,9 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
+
+
 
 module.exports = router;

@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
     }
   });
 
+
 router.post('/', async (req, res) => {
   try{
     const {title, content} = req.body;
@@ -26,7 +27,7 @@ router.post('/', async (req, res) => {
     const newPost = await BlogPost.create({
       title,
       content,
-      user_id: req.session.user_id,
+      author: req.session.user_id,
     });
     console.log(newPost);
 
@@ -35,6 +36,27 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const project = await BlogPost.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+
+    if (!project) {
+      res.status(404).json({ message: "Post not found" });
+      return;
+    }
+
+    res.status(200).json(project);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
     
 
 
