@@ -94,3 +94,7 @@
   .card.createBlog {
     width: 60%; /* Adjust this width as needed to control the width of the card. */
   }
+
+  .featuredPost{
+    max-width: 50%;
+  }
