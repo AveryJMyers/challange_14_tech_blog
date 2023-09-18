@@ -12,21 +12,21 @@
         <section id="mainNav">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">TECH BLOG</a>
+                    <a class="navbar-brand" aria-current="page" href="/">TECH BLOG</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse show"       id="navbarNavAltMarkup">
                         {{#if logged_in}}
                         <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="/feed">My Feed</a>
+                            <a class="nav-link " href="/feed">My Feed</a>
                             <a class="nav-link" href="/myBlogs">My Blogs</a>
                             <a class="nav-link" href="/api/user/logout">Sign Out</a>
                             {{!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> NOT SURE WHAT ITS DOING --}}
                         </div>
                         {{else}}
                         <div class="navbar-nav">
-                            <a class="nav-link active" aria-current="page" href="/signup">My Feed</a>
+                            <a class="nav-link" aria-current="page" href="/signup">My Feed</a>
                             <a class="nav-link" href="/signup">My Blogs</a>
                             <a class="nav-link" href="/login">Sign-In</a>
                             {{!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> NOT SURE WHAT ITS DOING --}}

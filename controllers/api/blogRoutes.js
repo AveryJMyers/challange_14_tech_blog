@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
       content,
       author: req.session.user_id,
     });
-    console.log(newPost);
+    res.redirect('/myBlogs')
 
   } catch (err) {
     console.error(err);
@@ -53,6 +53,39 @@ router.get("/:id", async (req, res) => {
 
     res.status(200).json(project);
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post('/edit/:id', async (req, res) => {
+  try{
+    const updated = await BlogPost.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.redirect('/myBlogs');
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+router.post('/delete/:id' , async (req, res) => {
+  try {
+    const deleted = await BlogPost.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.redirect('/myBlogs');
+  } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
